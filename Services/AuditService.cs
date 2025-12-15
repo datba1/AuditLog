@@ -22,6 +22,7 @@ namespace AuditLog.Services
             {
                 var entry = new AuditEntry
                 {
+                    Level = logDto.Level,
                     UserId = _userContext.GetUserId() ?? "Anonymous",
                     UserName = _userContext.GetUserName(),
                     IpAddress = _userContext.GetIpAddress(),
