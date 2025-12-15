@@ -7,19 +7,17 @@ namespace AuditLog.Services
 {
     public class AuditService : IAuditService
     {
-        private readonly IAuditStore _store;
+        private readonly IEnumerable<IAuditStore> _stores;
         private readonly IUserContext _userContext;
 
-        public AuditService(IAuditStore store, IUserContext userContext)
+        public AuditService(IEnumerable<IAuditStore> stores, IUserContext userContext)
         {
-            _store = store;
+            _stores = stores;
             _userContext = userContext;
         }
 
         public async Task LogAsync(LogDto logDto)
         {
-
-
             try
             {
                 var entry = new AuditEntry
@@ -34,7 +32,10 @@ namespace AuditLog.Services
                     NewValues = JsonSerializer.Serialize(logDto.NewObj),
                 };
 
-                await _store.SaveLogAsync(entry);
+                foreach (var store in _stores)
+                {
+                    await store.SaveLogAsync(entry);
+                }
             }
             catch (Exception ex)
             {
