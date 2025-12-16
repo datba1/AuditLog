@@ -4,6 +4,16 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+		<PackageId>datba.AuditLog</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>datba</Authors>
+		<Company>datba</Company>
+		<Description>Audit log library for .NET</Description>
+		<PackageTags>audit log logging</PackageTags>
+		<RepositoryUrl>https://github.com/datba1/AuditLog</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
